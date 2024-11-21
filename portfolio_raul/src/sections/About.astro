@@ -1,0 +1,13 @@
+---
+import { heroData } from "@/data/heroData.astro";
+---
+
+<article class="flex flex-col items-center justify-center gp-6 text-yellow-700">
+    <div>
+        <p>
+            {heroData.map((item, index) => (
+                <p>{item.data}</p>
+              ))}
+        </p>
+    </div>
+</article>

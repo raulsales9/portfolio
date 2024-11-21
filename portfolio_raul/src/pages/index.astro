@@ -1,0 +1,28 @@
+---
+import Section from "@/components/Section.astro";
+import AboutData from "@/data/aboutData.astro";
+import LayoutBase from "@/layout/layoutBase.astro";
+import AboutMe from "@/sections/About.astro"
+const title = "Portfolio Raul Sales";
+const description = "Hire me to work as a fullstack developer";
+---
+
+<LayoutBase title={title} description={description}>
+    <main class="px-4">
+        <Section id="Hero">
+
+        </Section>
+        <Section id="About Me">
+			<AboutMe/>
+        </Section>
+        <Section id="Skills">
+
+        </Section>
+        <Section id="Projects">
+
+        </Section>
+        <Section id="Contact">
+
+        </Section>
+    </main>
+</LayoutBase>
