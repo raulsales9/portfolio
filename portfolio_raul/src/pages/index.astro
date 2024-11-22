@@ -3,6 +3,7 @@ import Section from "@/components/Section.astro";
 import AboutData from "@/data/aboutData.astro";
 import LayoutBase from "@/layout/layoutBase.astro";
 import AboutMe from "@/sections/About.astro"
+import Hero from "@/sections/Hero.astro";
 const title = "Portfolio Raul Sales";
 const description = "Hire me to work as a fullstack developer";
 ---
@@ -10,7 +11,9 @@ const description = "Hire me to work as a fullstack developer";
 <LayoutBase title={title} description={description}>
     <main class="px-4">
         <Section id="Hero">
-
+			<Hero>
+				<slot/>
+			</Hero>
         </Section>
         <Section id="About Me">
 			<AboutMe/>

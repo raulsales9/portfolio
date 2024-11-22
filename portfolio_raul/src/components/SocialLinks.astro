@@ -1,0 +1,25 @@
+---
+import Github from "@/icons/Github.astro";
+import Instagram from "@/icons/Instagram.astro";
+import X from "@/icons/X.astro";
+---
+
+<nav class:list={`${Astro.props.class}`}>
+  <ul class="flex flex-row items-center gap-x-6">
+    <li>
+      <a href="" class="inlene-block motion-safe:transition ">
+        <X class="text-primary transition-colors duration-300 hover:text-accent motion-reduce:duration-0" />
+      </a>
+    </li>
+    <li>
+      <a href="" class="text-primary transition-colors duration-300 hover:text-accent motion-reduce:duration-0" />
+        <Github class="text-primary transition-colors duration-300 hover:text-accent motion-reduce:duration-0" />
+      </a>
+    </li>
+    <li>
+      <a href="" class="text-primary transition-colors duration-300 hover:text-accent motion-reduce:duration-0" />
+        <Instagram class="text-primary transition-colors duration-300 hover:text-accent motion-reduce:duration-0" />
+      </a>
+    </li>
+  </ul>
+</nav>

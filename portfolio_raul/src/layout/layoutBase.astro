@@ -1,34 +1,42 @@
 ---
-import Footer from '@/sections/footer.astro';
-import Header from '@/sections/header.astro';
-import "@/styles/global.css"
-import  { ViewTransitions } from "astro:transitions"
+import Footer from "@/sections/Footer.astro";
+import Header from "@/sections/header.astro";
+import "@/styles/global.css";
+import { ViewTransitions } from "astro:transitions";
 interface Props {
-    title: string
-    description: string
+  title: string;
+  description: string;
 }
 
-const { title, description} = Astro.props;
+const { title, description } = Astro.props;
 ---
+
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="description" content={description}/>
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-        <ViewTransitions/>
-	</head>
-	<body class="relative">
-        <Header/>
-        <slot/>
-		<Footer/>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body class="relative overflow-x-hidden text-black dark:text-white">
+    <Header />
+    <slot />
+    <Footer />
+  </body>
 </html>
 
 <style is:global>
-    html{
-        scroll-behavior: smooth;
-    }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    background: #232526; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #232526, #414345); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #232526, #414345); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
 </style>
