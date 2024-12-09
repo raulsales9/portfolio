@@ -1,0 +1,38 @@
+---
+interface PdfItem {
+  title: string;
+  link: string; 
+  thumbnail: string;
+}
+
+const pdfs: PdfItem[] = [
+  {
+    title: "Mejor proyecto integrado 2023",
+    link: "https://drive.google.com/file/d/1Op72esmtY7UgN6uwcEPnJPHj9g0N7ijF/view?usp=sharing",
+    thumbnail: "public/image/award_florida.png",
+  }
+];
+---
+
+<section class="container mx-auto p-6">
+  <h2 class="text-2xl font-bold text-center mb-8">Mis PDFs</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6">
+    {pdfs.map((pdf) => (
+      <div
+        key={pdf.link}
+        class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+      >
+        <a href={pdf.link} target="_blank" rel="noopener noreferrer" class="block">
+          <img
+            src={pdf.thumbnail}
+            alt={`Logo de ${pdf.title}`}
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-gray-800">{pdf.title}</h3>
+          </div>
+        </a>
+      </div>
+    ))}
+  </div>
+</section>

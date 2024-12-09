@@ -1,0 +1,135 @@
+---
+const navItems = [
+  { title: "About Me", label: "aboutme", url: "#aboutme" },
+  { title: "Projects", label: "projects", url: "#projects" },
+  { title: "Skills", label: "skills", url: "#skills" },
+  { title: "Contact", label: "contact", url: "#contact" },
+];
+---
+
+<header class="sticky top-0 w-full p-3 z-50 bg-gray-900">
+  <div class="container mx-auto flex justify-between items-center p-6">
+    <h1 class="text-xl font-bold">
+      <a href="/" class="hover:text-gray-300" aria-label="Home">
+        Raul Sales <span class="font-bold">.</span>
+      </a>
+    </h1>
+
+    <button
+      id="menu-toggle"
+      class="md:hidden flex flex-col justify-center items-center space-y-1"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      <span class="block w-6 h-0.5 bg-white"></span>
+      <span class="block w-6 h-0.5 bg-white"></span>
+      <span class="block w-6 h-0.5 bg-white"></span>
+    </button>
+
+    <nav class="hidden md:flex items-center space-x-4">
+      {navItems.map((link) => (
+        <a
+          key={link.label}
+          class="px-4 py-2 text-white hover:text-gray-300"
+          aria-label={link.label}
+          href={link.url}
+        >
+          {link.title}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<div id="drawer" class="fixed inset-0 bg-gray-800 bg-opacity-80 z-40 hidden">
+  <div class="w-2/4 bg-gray-900 text-white p-6 h-full ml-auto">
+    <ul class="space-y-6">
+      {navItems.map((link) => (
+        <li key={link.label}>
+          <a
+            class="block text-white text-lg hover:text-gray-300"
+            href={link.url}
+            aria-label={link.label}
+          >
+            {link.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<script>
+  const menuToggleButton = document.getElementById("menu-toggle");
+  const drawer = document.getElementById("drawer");
+
+  menuToggleButton.addEventListener("click", () => {
+    drawer.classList.toggle("hidden");
+    const isExpanded = menuToggleButton.getAttribute("aria-expanded") === "true";
+    menuToggleButton.setAttribute("aria-expanded", !isExpanded);
+  });
+
+  document.querySelectorAll("#drawer a").forEach((link) => {
+    link.addEventListener("click", () => {
+      drawer.classList.add("hidden");
+      menuToggleButton.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll("[id]");
+    const navItems = document.querySelectorAll("header nav a");
+
+    const callback = (entries :any) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navItems.forEach((item) => {
+            if (item.getAttribute("href") === `#${entry.target.id}`) {
+              item.classList.add("text-blue-500");
+            } else {
+              item.classList.remove("text-blue-500");
+            }
+          });
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    });
+
+    sections.forEach((section) => observer.observe(section));
+  });
+
+  window.addEventListener("scroll", () => {
+    const header = document.querySelector("header");
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+</script>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  header {
+    transition:
+      background-color 0.6s ease-in-out,
+      box-shadow 0.6s ease-in-out;
+  }
+  header {
+    background-color: #070a0f;
+    animation: nav-shadown 1s linear both;
+  }
+  header.scrolled {
+    background-color: rgba(6, 8, 14, 0.85);
+    box-shadow: 0 4px 8px rgba(2, 0, 0, 0.2);
+  }
+
+</style>

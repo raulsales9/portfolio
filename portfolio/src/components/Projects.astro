@@ -1,0 +1,122 @@
+---
+import NextJs from "../../public/icons/next.astro";
+import Tailwindcss from "../../public//icons/tailwindcss.astro";
+import Symfony from "public/icons/symfony.astro";
+import Flutter from "public/icons/flutter.astro";
+
+const TAGS = {
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextJs,
+  },
+  Tailwindcss: {
+    name: "Tailwindcss",
+    class: "bg-blue-500 text-white",
+    icon: Tailwindcss,
+  },
+  SYMFONY: {
+    name: "Symfony",
+    class: "bg-blue-500 text-white",
+    icon: Symfony
+  },
+  FLUTTER: {
+    name: "Flutter",
+    class: "bg-blue-500 text-white",
+    icon: Flutter
+  }
+};
+
+const projects = [
+  {
+    name: "Opre Jireh",
+    links: "https://github.com/raulsales9/PI-APG.git",
+    description: "A platform for organizing events and connecting with participants.",
+    images: [
+      "https://via.placeholder.com/300x200?text=Image+1",
+      "https://via.placeholder.com/300x200?text=Image+2",
+    ],
+    tags: [TAGS.NEXT, TAGS.Tailwindcss],
+  },
+  {
+    name: "Ecoreward",
+    links: "https://github.com/raulsales9/EcoReward.git",
+    description: "An ecommerce platform for online shopping.",
+    images: [
+      "https://via.placeholder.com/300x200?text=Image+1",
+      "https://via.placeholder.com/300x200?text=Image+2",
+    ],
+    tags: [TAGS.NEXT],
+  },
+  {
+    name: "Kurigram",
+    links: "https://github.com/raulsales9/EcoReward.git",
+    description: "An ecommerce platform for online shopping.",
+    images: [
+      "https://via.placeholder.com/300x200?text=Image+1",
+      "https://via.placeholder.com/300x200?text=Image+2",
+    ],
+    tags: [TAGS.NEXT],
+  },
+  {
+    name: "Avgpv",
+    links: "https://github.com/raulsales9/avgpv_ra.git",
+    description: "An ecommerce platform for online shopping.",
+    images: [
+      "https://via.placeholder.com/300x200?text=Image+1",
+      "https://via.placeholder.com/300x200?text=Image+2",
+    ],
+    tags: [TAGS.NEXT],
+  },
+  
+];
+---
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {projects.map((project) => (
+    <div key={project.name} class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col h-full">
+      <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">{project.name}</h3>
+      <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm sm:text-base">{project.description}</p>
+      <div class="mb-4 flex justify-center gap-3">
+        {project.images.map((image, index) => (
+          <button 
+            key={index}
+            onClick={() => document.getElementById(`project-image-${project.name}`).src = image}
+            class="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden shadow-md"
+          >
+            <img
+              src={image}
+              alt={`Project Image ${index + 1}`}
+              class="object-cover w-full h-full"
+            />
+          </button>
+        ))}
+      </div>
+      <img
+        id={`project-image-${project.name}`}
+        src={project.images[0]}
+        alt="Project Main View"
+        class="w-full h-36 sm:h-48 lg:h-56 object-cover rounded-lg shadow-md"
+      />
+
+      <!-- Tags -->
+      <div class="flex gap-2 flex-wrap mt-4">
+        {project.tags.map((tag) => (
+          <div key={tag.name} class={`px-3 py-1 rounded-full text-sm font-medium flex items-center gap-2 ${tag.class}`}>
+            <tag.icon class="w-5 h-5" />
+            <span>{tag.name}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Project Link -->
+      <a
+        href={project.links}
+        class="mt-auto text-blue-500 hover:underline font-semibold text-center"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Ver proyecto
+      </a>
+    </div>
+  ))}
+</div>

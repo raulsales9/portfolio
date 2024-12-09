@@ -1,0 +1,67 @@
+---
+const about = {
+  title: "¿Quién soy?",
+  description: "Mi nombre es Raül sales, y soy  un desarrollador backend, en busca de elaborar y mejorar las soluciones que ofrezco. Mi interés por el backend comenzço con php, por ello mi agrado con los lenguajes tipados.",
+  description2: "He desarrollado varios proyectos full stack, con Node.JS, Symfony y Django como backend, consiguiendo el objetivo de proyectos.",
+  description3: "Busco la creación de soluciones aplicadas a los retos que se presentan, adaptandome a la situación, y sobretodo disfrutando el trabajo en equipo"
+} 
+
+const skillsData = [
+  {
+    name: "Diseño y Desarrollo de APIs",
+    icon: "api-design",
+    description: "Creación de APIs RESTful escalables y seguras, implementando buenas practicas, como la documentación de estas con Swagger/OpenApi y autenticación JWT"
+  },
+  {
+    name: "Integración, Optimización y validación",
+    icon: "Integration",
+    description: "Integración de servicios externos, optimización de bases de datos y consultas"
+  },
+  {
+    name: "Stack técnologico",
+    icon: "Stackteck",
+    description: "Lista de frameworks y técnologias para el desarrollo de aplicaciones, con bases de datos relacionales, y objetoi-relacionales "
+  },
+]
+---
+
+<div class="w-full container mx-auto py-8 md:py-12 lg:py-16">
+  <!-- About Section -->
+  <div class="flex flex-col md:flex-row gap-6 items-center">
+    <!-- Image -->
+    <div class="w-2/3 mx-auto md:w-1/3 md:mx-0">
+      <img 
+        src="/img/aboutme.webp" 
+        alt="Imagen de desarrollador backend" 
+        class="rounded-lg shadow-lg w-full max-w-xs mx-auto"
+      />
+    </div>
+
+    <!-- Description -->
+    <div class="text-center md:text-left md:w-2/3 text-gray-800 dark:text-gray-300 space-y-4">
+      <p class="text-sm sm:text-base">{about.description}</p>
+      <p class="text-sm sm:text-base">{about.description2}</p>
+      <p class="text-sm sm:text-base">{about.description3}</p>
+      <span class="inline-block mt-4 bg-gradient-to-r from-gray-800 to-gray-600 text-white dark:from-gray-400 dark:to-gray-500 py-2 px-4 rounded-full shadow-md text-sm sm:text-base">
+        Disponible para trabajar
+      </span>
+    </div>
+  </div>
+
+  <!-- Habilidades Section -->
+  <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+    {skillsData.map((habilidad, index) => (
+      <li key={index} class="relative bg-white dark:bg-gray-800 shadow-lg p-4 sm:p-6 rounded-xl text-center">
+        <div class="flex flex-col items-center space-y-3">
+          <img 
+            src={`/img/${habilidad.icon}.svg`} 
+            alt={`Icono de ${habilidad.name}`} 
+            class="w-14 h-14 sm:w-16 sm:h-16 p-2 border border-gray-300 dark:border-gray-600 rounded-full"
+          />
+          <h3 class="text-sm sm:text-base font-semibold text-gray-800 dark:text-white">{habilidad.name}</h3>
+          <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{habilidad.description}</p>
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>

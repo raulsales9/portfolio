@@ -1,0 +1,43 @@
+---
+import Layout from "../layout/Layout.astro";
+import Hero from "../components/Hero.astro";
+import SectionWrapper from "@/components/SectionWrapper.astro";
+import Projects from "@/components/Projects.astro";
+import Contact from "@/components/Contact.astro";
+import Awards from "@/components/Awards.astro";
+import AboutMe from "@/components/AboutMe.astro";
+import Tecnologias from "@/components/Tecnologias.astro";
+import TitleSection from "@/components/TitleSection.astro";
+---
+
+<Layout
+  title="porfolio de Raül Sales"
+  description="Un backend developer, disponible para las necesidades de tu negocio o servicio"
+>
+  <main class="px-4">
+    <SectionWrapper>
+      <Hero>
+        <slot />
+      </Hero>
+    </SectionWrapper>
+    <SectionWrapper id="aboutme">
+      <TitleSection>
+        <AboutMe />
+      </TitleSection>
+    </SectionWrapper>
+    <SectionWrapper id="projects">
+      <TitleSection>
+        <Projects />
+      </TitleSection>
+    </SectionWrapper>
+    <SectionWrapper id="tecnologies">
+      <TitleSection> <Tecnologias /></TitleSection>
+    </SectionWrapper>
+    <SectionWrapper id="awards">
+      <TitleSection><Awards /></TitleSection>
+    </SectionWrapper>
+    <SectionWrapper id="contact">
+      <TitleSection><Contact /></TitleSection>
+    </SectionWrapper>
+  </main>
+</Layout>

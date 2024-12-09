@@ -1,0 +1,65 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { ViewTransitions } from "astro:transitions";
+import type { string } from "astro:schema";
+
+interface Props {
+    title: string,
+    description: string
+}
+
+const { title, description } = Astro.props
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description}>
+    <meta name="generator" content={Astro.generator} />
+    <ViewTransitions />
+    <title>{title}</title>
+  </head>
+  <body class="relative">
+    <div
+      class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-gray-950
+        bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
+        dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+    >
+    </div>
+    <Header/>
+      <slot />
+      <Footer />
+      <style is:global>
+        :root {
+          color-scheme: light dark;
+        }
+        html {
+          scroll-behavior: smooth;
+        }
+        @font-face {
+            font-family: 'PixelifySans';
+            src: url('/fonts/dm-sans-latin-400-normal.woff2') format('woff');
+        }
+        a {
+            font-family: ;
+        }
+        h2 {
+            font-family: 'PixelifySans', sans-serif;
+        }
+
+        body {
+            font-family: 'PixelifySans', sans-serif;
+          display: flex;
+          flex-direction: column;
+          overscroll-behavior: none;
+          min-height: 100vh;
+        }
+
+        
+      </style>
+    </Header>
+  </body>
+</html>

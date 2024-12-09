@@ -1,0 +1,63 @@
+---
+import Github from "public/icons/github.astro";
+import LinkedIn from "public/icons/linkedIn.astro";
+import X from "public/icons/XIcon.astro";
+import TailwindCSS from "public/icons/tailwindcss.astro";
+import AstroIcon from "public/icons/astro.astro";
+---
+
+<footer class="mt-20 py-12 bg-gray-800 text-gray-100 rounded-t-lg border-t border-blue-700">
+  <div class="max-w-6xl mx-auto  container px-8 space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-8">
+    
+    <!-- Redes de contacto -->
+    <div class="flex flex-col items-center md:items-start">
+      <h2 class="text-xl font-semibold tracking-wide mb-4 text-center md:text-left">
+        Redes de Contacto
+      </h2>
+      <div class="flex space-x-6">
+        <a 
+          href="#" 
+          target="_blank" 
+          class="text-gray-300 hover:text-blue-500 transition text-xl"
+          aria-label="LinkedIn"
+        >
+          <LinkedIn />
+        </a>
+        <a 
+          href="#" 
+          target="_blank" 
+          class="text-gray-300 hover:text-blue-500 transition text-xl"
+          aria-label="X"
+        >
+          <X />
+        </a>
+        <a 
+          href="#" 
+          target="_blank" 
+          class="text-gray-300 hover:text-blue-500 transition text-xl"
+          aria-label="GitHub"
+        >
+          <Github />
+        </a>
+      </div>
+    </div>
+    <div class="text-center md:text-left">
+      <h2 class="text-xl font-semibold tracking-wide mb-4">
+        Cómo está hecha la web
+      </h2>
+      <div class="flex items-center justify-center md:justify-start space-x-4">
+        <div class="flex items-center space-x-2">
+          <AstroIcon class="w-6 h-6" />
+          <span>Astro</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <TailwindCSS class="w-6 h-6" />
+          <span>TailwindCSS</span>
+        </div>
+      </div>
+      <p class="mt-2 text-sm text-gray-400">
+        Desarrollado por <span class="text-blue-500">@raulsales9</span>
+      </p>
+    </div>
+  </div>
+</footer>

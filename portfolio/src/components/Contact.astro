@@ -1,0 +1,112 @@
+---
+import Github from "public/icons/github.astro";
+import Instagram from "public/icons/instagram.astro";
+import LinkedIn from "public/icons/linkedIn.astro";
+import XIcon from "public/icons/XIcon.astro";
+---
+
+<section class="container mx-auto p-6 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white rounded-lg shadow-lg">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    
+    <!-- Formulario -->
+    <div class="bg-gray-800 p-8 rounded-lg shadow-md">
+      <h2 class="text-2xl font-semibold mb-6 text-center md:text-left">Contáctame</h2>
+      <form action="#" method="POST" class="space-y-6">
+        <div class="flex flex-col space-y-2">
+          <label for="name" class="font-semibold">Nombre</label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            class="p-4 border rounded-md border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+            placeholder="Tu nombre" 
+            required 
+          />
+        </div>
+
+        <div class="flex flex-col space-y-2">
+          <label for="email" class="font-semibold">Correo Electrónico</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            class="p-4 border rounded-md border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+            placeholder="Tu correo" 
+            required 
+          />
+        </div>
+
+        <div class="flex flex-col space-y-2">
+          <label for="message" class="font-semibold">Mensaje</label>
+          <textarea 
+            id="message" 
+            name="message" 
+            class="p-4 border rounded-md border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+            placeholder="Tu mensaje..." 
+            rows="6" 
+            required
+          ></textarea>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          Enviar
+        </button>
+      </form>
+    </div>
+
+    <!-- Información de Contacto -->
+    <div class="text-center md:text-left space-y-6">
+      <img 
+        src="public/image/profile.webp" 
+        alt="Imagen de contacto" 
+        class="w-full rounded-md shadow-lg max-w-xs mx-auto md:mx-0"
+      />
+      <div class="flex justify-center md:justify-start gap-6">
+        <a href="https://linkedin.com" class="hover:scale-110 transform transition">
+          <LinkedIn />
+        </a>
+        <a href="https://x.com" class="hover:scale-110 transform transition">
+          <XIcon />
+        </a>
+        <a href="https://instagram.com" class="hover:scale-110 transform transition">
+          <Instagram />
+        </a>
+        <a href="https://github.com" class="hover:scale-110 transform transition">
+          <Github />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Transiciones suaves */
+  form input, form textarea, button {
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Hover en botones y campos */
+  form input:focus, form textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Ajustes responsivos */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 2rem 1.5rem;
+    }
+  }
+</style>

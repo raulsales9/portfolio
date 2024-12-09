@@ -1,0 +1,126 @@
+---
+const tecnology = [
+  { id: 1, name: "CSS", imagen: "css3", description: "Cascade Style" },
+  { id: 2, name: "ASTRO", imagen: "astro", description: "" },
+  { id: 3, name: "POSTGRESQL", imagen: "postgresql", description: "" },
+  { id: 4, name: "NODE", imagen: "node", description: "" },
+  { id: 5, name: "TYPESCRIPT", imagen: "typescript", description: "" },
+  { id: 6, name: "FIGMA", imagen: "figma", description: "" },
+]
+---
+
+<div class="max-w-screen-xl mx-auto pt-10">
+  <h2 class="text-4xl font-title font-extrabold tracking-wider leading-none text-white text-center mb-10">Habilidades</h2>
+  <div class="w-full inline-flex flex-nowrap overflow-hidden mb-10">
+    <div class="flex items-center justify-center md:justify-start [&_li]:mx-10 [&_img]:max-w-none animate-infinite-scroll">
+      {tecnology.map(tecnologia => (
+        <ul key={tecnologia.id} class="flex items-center">
+          <li class="flex items-center gap-2">
+            <img 
+              class="w-14 h-14 filter grayscale hover:grayscale-0 transition-all" 
+              src={`/icons/${tecnologia.imagen}.astro`} 
+              alt={`Imagen de ${tecnologia.name}`} 
+            />
+            <div class="font-medium text-white">
+              <p class="text-2xl font-semibold">{tecnologia.name}</p>
+            </div>
+          </li>
+        </ul>
+      ))}
+    </div>
+  </div>
+
+  <div class="w-full inline-flex flex-nowrap overflow-hidden mb-10 scale-x-[-1]">
+    <div class="flex items-center justify-center md:justify-start [&_li]:mx-10 [&_img]:max-w-none animate-infinite-scroll">
+      {tecnology.map(tecnologia => (
+        <ul key={`duplicate-${tecnologia.id}`} class="flex items-center scale-x-[-1]">
+          <li class="flex items-center gap-2">
+            <img 
+              class="w-14 h-14 filter grayscale hover:grayscale-0 transition-all" 
+              src={`/icons/${tecnologia.imagen}.astro`} 
+              alt={`Imagen de ${tecnologia.name}`} 
+            />
+            <div class="font-medium text-white">
+              <p class="text-2xl font-semibold">{tecnologia.name}</p>
+            </div>
+          </li>
+        </ul>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes infinite-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%); /* Mover la mitad del contenido para un carrusel fluido */
+    }
+  }
+
+  @keyframes infinite-scroll-reverse {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(50%); /* Mover la mitad del contenido para un carrusel fluido */
+    }
+  }
+
+  .animate-infinite-scroll {
+    animation: infinite-scroll 20s linear infinite;
+  }
+
+  .animate-infinite-scroll-reverse {
+    animation: infinite-scroll-reverse 20s linear infinite;
+  }
+
+  /* Media Queries for Responsiveness */
+  @media (max-width: 640px) { /* sm screens */
+    .w-14 {
+      width: 3.5rem; /* Smaller icon size */
+      height: 3.5rem;
+    }
+    .space-x-6 {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+    .text-2xl {
+      font-size: 1.5rem; /* Smaller font for text */
+    }
+    .flex {
+      flex-direction: column; /* Stack the items vertically */
+      align-items: center;
+    }
+    .overflow-hidden {
+      overflow: hidden; /* Elimina la barra de desplazamiento */
+    }
+    .animate-infinite-scroll, .animate-infinite-scroll-reverse {
+      animation-duration: 30s; /* Slower animation for mobile */
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 1024px) { /* md screens */
+    .space-x-6 {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    .w-14 {
+      width: 3.75rem; /* Slightly larger icons */
+      height: 3.75rem;
+    }
+  }
+
+  @media (min-width: 1025px) { /* lg screens */
+    .space-x-10 {
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+    .w-14 {
+      width: 4rem; /* Standard icon size */
+      height: 4rem;
+    }
+  }
+</style>
